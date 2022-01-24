@@ -29,8 +29,6 @@ std::string hash_str(std::string input, int input_len) {
 
     std::string hash;
     hash.append(reinterpret_cast<const char*>(hash_buffer), hash_len);
-    
-    copy_plaintext(input);
 
     EVP_MD_CTX_free(ctx);
 
