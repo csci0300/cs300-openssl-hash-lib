@@ -3,6 +3,12 @@ This repository includes a wrapper around OpenSSL's hash functions (which typica
 
 We provide the following function: 
 ```c++
+// Arguments: 
+//   * input: std::string representing the 
+//            plaintext you would like to hash
+//   * input_len: length of input (in bytes)
+// Output: 
+//   * std::string representing the hash of the input plaintext
 std::string hash_str(std::string input, int input_len)
 ```
 
