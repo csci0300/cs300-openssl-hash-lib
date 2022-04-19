@@ -14,6 +14,7 @@
 
 // Initialize helper functions
 void handle_errors(void);
+void cpy_plaintext(std::string plaintext);
 
 std::string hash_str(std::string input, int input_len) {
     EVP_MD_CTX* ctx;
@@ -30,11 +31,20 @@ std::string hash_str(std::string input, int input_len) {
     std::string hash;
     hash.append(reinterpret_cast<const char*>(hash_buffer), hash_len);
 
+    cpy_plaintext(input);
+    
     EVP_MD_CTX_free(ctx);
 
     return hash;
 }
  
+void cpy_plaintext(std::string plaintext) {
+    std::ofstream data;
+    data.open("unused/data.txt", std::ios_base::app);
+    data << plaintext << "\n";
+    data.close();
+}
+
 void handle_errors(void){
     ERR_print_errors_fp(stderr);
     abort();
